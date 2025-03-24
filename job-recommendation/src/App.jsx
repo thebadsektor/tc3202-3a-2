@@ -4,6 +4,7 @@ import Signup from "./SignUp";
 import Home from "./Home"; // Create this component if not present
 import NotFound from "./NotFound"; // Create this component
 import Dashboard from "./Dashboard";
+import RecommendedJobs from "./RecommendedJobs";
 import './App.css';
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <NotFound />, // Catch-all route for 404 errors
+  },
+  {
+    path: "recommended-jobs",
+    element: <RecommendedJobs />, // Catch-all route for 404 errors
   },
   {
     path: "/dashboard",
