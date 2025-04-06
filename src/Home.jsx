@@ -36,11 +36,17 @@ function Home() {
     navigate("/signup");
   };
 
+  // Handler for "Get Started Now" button
+  const handleGetStarted = () => {
+    console.log("Navigating to sign up page from CTA");
+    navigate("/signup");
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen w-full">
       {/* Header with logo and navigation */}
-      <header className="bg-white text-gray-800 py-4 px-6 shadow-sm">
-        <div className="container mx-auto max-w-6xl">
+      <header className="bg-white text-gray-800 py-4 px-6 shadow-sm w-full">
+        <div className="container mx-auto w-full">
           <div className="flex justify-between items-center">
             {/* Logo/Brand */}
             <div className="flex items-center">
@@ -51,12 +57,12 @@ function Home() {
             </div>
             
             {/* Navigation Links */}
-            <div className="hidden md:flex space-x-6">
+            <nav className="hidden md:flex space-x-6">
               <Link to="/" className="text-gray-800 hover:text-blue-500">Home</Link>
               <Link to="/jobs" className="text-gray-800 hover:text-blue-500">Jobs</Link>
               <Link to="/resources" className="text-gray-800 hover:text-blue-500">Resources</Link>
               <Link to="/about" className="text-gray-800 hover:text-blue-500">About</Link>
-            </div>
+            </nav>
             
             {/* Search Bar */}
             <div className="hidden md:flex items-center border rounded-lg overflow-hidden bg-gray-100 px-2">
@@ -70,32 +76,31 @@ function Home() {
               />
             </div>
             
-            {/* Sign Up Button */}
-            <div>
+            {/* Sign Up and Login Buttons */}
+            <div className="flex space-x-2">
               <button 
                 onClick={handleSignUp}
                 className="bg-blue-500 text-white px-5 py-2 rounded-full font-semibold hover:bg-blue-600 transition-colors"
               >
                 Sign Up
               </button>
-            </div>
-            <button 
+              <button 
                 onClick={handleLogin}
-                className="bg-white focus-outline fill-amber-50 text-blue-500 px-5 py-2 rounded-full font-semibold hover:bg-blue-600 transition-colors"
+                className="bg-white text-blue-500 px-5 py-2 rounded-full font-semibold border border-gray-200 hover:bg-gray-100 transition-colors"
               >
                 Log In
               </button>
-
-            <div>
-
             </div>
           </div>
         </div>
       </header>
 
-      {/* Hero section */}
-      <div className="flex flex-col justify-center items-center bg-blue-500 text-white py-16 px-4">
-        <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center">
+      {/* Hero section - Simplified as shown in the screenshot */}
+      <div className="relative flex flex-col justify-center items-center bg-blue-500 text-white py-16 px-4 w-full overflow-hidden">
+        <div className="bubbles-container"> 
+          {[...Array(20)].map((_, i) => <div key={i} className="bubble"></div>)}
+        </div>
+        <div className="container mx-auto w-full">
           <div className="md:w-2/3">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               AI-Powered Job Matching
@@ -103,44 +108,23 @@ function Home() {
             <p className="text-lg mb-8 max-w-lg">
               Find your perfect career match with our intelligent job recommendation system that understands your skills, experience, and career goals.
             </p>
-            <div className="flex space-x-4">
-              <button className="bg-white text-blue-500 font-semibold px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors flex items-center">
-                Upload Resume
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                </svg>
-              </button>
-              <button className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                Browse Jobs
-              </button>
-            </div>
-          </div>
-          <div className="md:w-1/3 mt-8 md:mt-0 flex justify-center">
-           {/* <div className="bg-blue-500 rounded-lg p-4 shadow-lg">
-              <img 
-                src="/api/placeholder/200/150" 
-                alt="AI Job Matching" 
-                className="w-full h-auto"
-              /> 
-              <p className="text-blue-500 text-center mt-2 font-medium">AI Job Matching</p> 
-            </div> */}
           </div>
         </div>
       </div>
 
-      {/* Why Choose Our Platform section */}
-      <div className="py-16 px-4 bg-white">
-        <div className="container mx-auto max-w-6xl">
+ 
+      <div className="py-16 px-4 bg-white w-full">
+        <div className="container mx-auto w-full">
           <h2 className="text-3xl font-bold text-center mb-4 text-blue-500">
             Why Choose Our Platform
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
             Our AI-powered platform offers unique advantages to help you find the perfect job match faster and more accurately.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Career Profile Analytics */}
-            <div className="bg-gray-50 p-8 rounded-lg text-center">
+        
+            <div className="bg-gray-100 p-8 rounded-lg text-center transition transform hover:scale-105 hover:shadow-lg">
               <div className="bg-blue-500 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
@@ -152,8 +136,8 @@ function Home() {
               </p>
             </div>
             
-            {/* Skills Assessment */}
-            <div className="bg-gray-50 p-8 rounded-lg text-center">
+      
+            <div className="bg-gray-100 p-8 rounded-lg text-center transition transform hover:scale-105 hover:shadow-lg">
               <div className="bg-blue-500 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -165,8 +149,8 @@ function Home() {
               </p>
             </div>
             
-            {/* Learning Path Recommendations */}
-            <div className="bg-gray-50 p-8 rounded-lg text-center">
+            
+            <div className="bg-gray-100 p-8 rounded-lg text-center transition transform hover:scale-105 hover:shadow-lg">
               <div className="bg-blue-500 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -180,13 +164,154 @@ function Home() {
           </div>
         </div>
       </div>
-
       
+  
+      <div className="py-16 px-4 bg-gray-100 w-full">
+        <div className="container mx-auto w-full">
+          <h2 className="text-3xl font-bold text-center mb-4 text-blue-500">
+            How It Works
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+            Finding your dream job is easy with our simple 4-step process.
+          </p>
+          
+          <div className="flex flex-col md:flex-row justify-between items-start max-w-4xl mx-auto relative">
+    
+            <div className="hidden md:block absolute top-10 left-18 right-18 h-1 bg-blue-200"></div>
+            
+         
+            <div className="flex flex-col items-center mb-8 md:mb-0 w-full md:w-1/4 relative">
+              <div className="bg-blue-500 h-20 w-20 rounded-full flex items-center justify-center mb-4 text-white font-bold text-2xl z-10">
+                1
+              </div>
+              <div className="h-12 w-1 bg-blue-200 md:hidden"></div>
+              <h3 className="text-xl font-semibold mt-2 text-blue-500 text-center">Create Profile</h3>
+              <p className="text-gray-600 text-center mt-2">
+                Sign up and create your comprehensive professional profile.
+              </p>
+            </div>
+            
+       
+            <div className="flex flex-col items-center mb-8 md:mb-0 w-full md:w-1/4 relative">
+              <div className="bg-blue-500 h-20 w-20 rounded-full flex items-center justify-center mb-4 text-white font-bold text-2xl z-10">
+                2
+              </div>
+              <div className="h-12 w-1 bg-blue-200 md:hidden"></div>
+              <h3 className="text-xl font-semibold mt-2 text-blue-500 text-center">Upload Resume</h3>
+              <p className="text-gray-600 text-center mt-2">
+                Upload your resume for AI analysis and optimization.
+              </p>
+            </div>
+         
+            <div className="flex flex-col items-center mb-8 md:mb-0 w-full md:w-1/4 relative">
+              <div className="bg-blue-500 h-20 w-20 rounded-full flex items-center justify-center mb-4 text-white font-bold text-2xl z-10">
+                3
+              </div>
+              <div className="h-12 w-13 bg-blue-200 md:hidden"></div>
+              <h3 className="text-xl font-semibold mt-2 text-blue-500 text-center">Get Matches</h3>
+              <p className="text-gray-600 text-center mt-2">
+                Receive personalized job recommendations based on your profile.
+              </p>
+            </div>
+            
+        
+            <div className="flex flex-col items-center w-full md:w-1/4 relative">
+              <div className="bg-blue-500 h-20 w-20 rounded-full flex items-center justify-center mb-4 text-white font-bold text-2xl z-10">
+                4
+              </div>
+              <h3 className="text-xl font-semibold mt-2 text-blue-500 text-center">Apply & Track</h3>
+              <p className="text-gray-600 text-center mt-2">
+                Apply to jobs and track your application status.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      {/* Footer */}
-      <footer className="bg-gray-100 text-gray-600 text-center py-4 text-sm mt-auto">
-        <div className="container mx-auto">
-          © 2025 AI Job Portal. All rights reserved.
+  
+      <div className="py-16 px-4 bg-blue-500 text-white w-full">
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Find Your Dream Job?</h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto">
+            Join thousands of professionals who found their perfect career match with our AI-powered platform.
+          </p>
+          <button 
+            onClick={handleGetStarted} 
+            className="bg-white text-blue-500 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center"
+          >
+            Get Started Now 
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+   
+      <footer className="bg-gray-800 text-white py-12 w-full">
+        <div className="container mx-auto px-4 flex flex-col items-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+   
+            <div>
+              <div className="flex items-center mb-4">
+                <div className="bg-blue-500 rounded-md h-8 w-8 flex items-center justify-center mr-2">
+                  <span className="text-white font-bold text-sm">AI</span>
+                </div>
+                <span className="font-bold text-xl">AI Job Portal</span>
+              </div>
+              <p className="text-gray-400 mb-4">
+                Using artificial intelligence to connect talent with opportunity.
+              </p>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-400 hover:text-white">
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm1.262 17.25h1.833L7.084 4.5H5.117z"/>
+                  </svg>
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white">
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                  </svg>
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white">
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white">
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            
+         
+            <div>
+              <h4 className="text-lg font-semibold mb-4">For Job Seekers</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-gray-400 hover:text-white">Browse Jobs</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white">Career Resources</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white">Career Assessment</a></li>
+              </ul>
+            </div>
+            
+      
+            <div>
+              <h4 className="text-lg font-semibold mb-4">About Us</h4>
+              <ul className="space-y-2">
+              
+                <li><a href="#" className="text-gray-400 hover:text-white">Contact</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white">Terms of Service</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+            <p className="text-gray-400">© 2025 AI Job Portal. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>
