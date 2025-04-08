@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import './App.css';
+import Logo from './assets/pagelogo.png';
+
 
 function Home() {
   const navigate = useNavigate();
@@ -42,6 +44,11 @@ function Home() {
     navigate("/signup");
   };
 
+  const MyComponent = () => {
+    return <img src={Logo} alt="Logo" />;
+  };
+  
+
   return (
     <div className="flex flex-col min-h-screen w-full">
       {/* Header with logo and navigation */}
@@ -50,10 +57,11 @@ function Home() {
           <div className="flex justify-between items-center">
             {/* Logo/Brand */}
             <div className="flex items-center">
-              <div className="bg-blue-500 rounded-md h-8 w-8 flex items-center justify-center mr-2">
-                <span className="text-white font-bold text-sm">AI</span>
-              </div>
-              <span className="font-bold text-xl text-blue-500">AI Job Portal</span>
+              <img
+              src={Logo}
+              alt="Logo"
+              className="w-100 h-20" 
+              />
             </div>
             
             {/* Navigation Links */}
