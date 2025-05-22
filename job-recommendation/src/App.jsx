@@ -1,11 +1,21 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Login from "./Login";
-import Signup from "./SignUp";
-import Home from "./Home"; // Create this component if not present
-import NotFound from "./NotFound"; // Create this component
+import Login from "./login";
+import Signup from "./signup";
+import Home from "./Home"; 
+import NotFound from "./NotFound";
 import Dashboard from "./Dashboard";
-import RecommendedJobs from "./RecommendedJobs";
+import LearningPath from "./LearningPath";
+import Profile from "./Profile";
+import Resume from "./Resume";
+import JobMatches from "./JobMatches";
 import './App.css';
+import About from "./About";
+import Privacy from "./privacy"; 
+import Terms from "./terms"; 
+import Contact from "./contact";
+import VerifyEmail from "./verifyEmail"; // Import the verification page
+import ML_prediction from "./ML_prediction";
+
 
 const router = createBrowserRouter([
   {
@@ -21,17 +31,53 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "*",
-    element: <NotFound />, // Catch-all route for 404 errors
+    path: "/verifyEmail", // Add this route for email verification
+    element: <VerifyEmail />,
   },
   {
-    path: "recommended-jobs",
-    element: <RecommendedJobs />, // Catch-all route for 404 errors
+    path: "*",
+    element: <NotFound />, 
+  },
+  {
+    path: "/learning-path",
+    element: <LearningPath />,
   },
   {
     path: "/dashboard",
-    element: <Dashboard/>
-  }
+    element: <Dashboard />,
+  }, 
+  {
+    path: "/profile",
+    element: <Profile />,
+  },
+  {
+    path: "/resume",
+    element: <Resume />,
+  },
+  {
+    path: "/job-matches",
+    element: <JobMatches />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+  {
+    path: "/privacy",
+    element: <Privacy />, // Route for the Privacy Policy page
+  },
+  {
+    path: "/terms",
+    element: <Terms />, 
+  },
+  {
+    path: "/contact",
+    element: <Contact />, 
+  },
+  {
+    path: "/ML_prediction",
+    element: <ML_prediction />, 
+  },
 ]);
 
 function App() {
